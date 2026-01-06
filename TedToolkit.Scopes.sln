@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TedToolkit.Scopes", "TedToolkit.Scopes\TedToolkit.Scopes.csproj", "{9075200E-FA7C-41AF-B8A9-B97268331700}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{0F164A46-EF53-4A92-BDAC-4FA2AE432659}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.props = Directory.Packages.props
+		Directory.Build.props = Directory.Build.props
+		.gitignore = .gitignore
+		.github\workflows\build.yml = .github\workflows\build.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "Build\Build.csproj", "{77C96634-3DC2-457C-8CC3-AFBBD29B3671}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TedToolkit.Scopes.Tests", "TedToolkit.Scopes.Tests\TedToolkit.Scopes.Tests.csproj", "{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9075200E-FA7C-41AF-B8A9-B97268331700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9075200E-FA7C-41AF-B8A9-B97268331700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9075200E-FA7C-41AF-B8A9-B97268331700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9075200E-FA7C-41AF-B8A9-B97268331700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77C96634-3DC2-457C-8CC3-AFBBD29B3671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77C96634-3DC2-457C-8CC3-AFBBD29B3671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77C96634-3DC2-457C-8CC3-AFBBD29B3671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
