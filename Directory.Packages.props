@@ -3,6 +3,7 @@
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
   </PropertyGroup>
   <ItemGroup>
+    <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageVersion Include="Polyfill" Version="9.5.0" />
     <PackageVersion Include="Sourcy.DotNet" Version="1.0.0" />
     <PackageVersion Include="TUnit" Version="1.9.2" />

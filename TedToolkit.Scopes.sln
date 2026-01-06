@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "Build\Build.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TedToolkit.Scopes.Tests", "TedToolkit.Scopes.Tests\TedToolkit.Scopes.Tests.csproj", "{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TedToolkit.Scopes.Benchmark", "TedToolkit.Scopes.Benchmark\TedToolkit.Scopes.Benchmark.csproj", "{78695F96-CF49-41C0-A20C-3229F64B5B14}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +33,9 @@ Global
 		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95C8AFB7-C8DF-4D03-8423-F4AA00CC92F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78695F96-CF49-41C0-A20C-3229F64B5B14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78695F96-CF49-41C0-A20C-3229F64B5B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78695F96-CF49-41C0-A20C-3229F64B5B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78695F96-CF49-41C0-A20C-3229F64B5B14}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
