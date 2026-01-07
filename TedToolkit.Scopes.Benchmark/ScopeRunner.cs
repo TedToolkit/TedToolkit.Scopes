@@ -8,6 +8,15 @@ namespace TedToolkit.Scopes.Benchmark;
 [MemoryDiagnoser]
 public class ScopeRunner
 {
+    [GlobalSetup]
+    public void Init()
+    {
+        using (new TestScope(10))
+        using (new Scope<ValueScope>(new ValueScope(10)))
+        {
+        }
+    }
+
     [Benchmark(Baseline = true)]
     public void ClassScope()
     {

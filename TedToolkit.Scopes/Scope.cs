@@ -131,7 +131,7 @@ public readonly struct Scope<TScope> : IDisposable
     /// Create a scope
     /// </summary>
     /// <param name="value">the value</param>
-    public Scope(TScope value)
+    public Scope(scoped in TScope value)
     {
         _parent = _current.Value;
         _current.Value = _item.Add(value);
