@@ -5,6 +5,8 @@
 // </copyright>
 // -----------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
+
 namespace TedToolkit.Scopes;
 
 /// <summary>
@@ -23,7 +25,10 @@ public abstract class ScopeBase<TScope> :
     ///  Current Value
     /// </summary>
     public static TScope? Current
-        => _currentScope.Value;
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _currentScope.Value;
+    }
 
     /// <summary>
     /// Create a base scope

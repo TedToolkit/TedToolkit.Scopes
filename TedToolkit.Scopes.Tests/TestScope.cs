@@ -1,6 +1,6 @@
 ﻿namespace TedToolkit.Scopes.Tests;
 
-internal class TestScope(int value) : ScopeBase<TestScope>
+internal class TestValueScope(int value) : ScopeBase<TestValueScope>
 {
     public int Value => value;
 }
