@@ -9,13 +9,14 @@ internal class ValueScopeTests
         int count)
     {
         var baseCount = count * 10;
-        using (new TestValueScope(baseCount + 1))
+        using (new ClassSample(baseCount + 1).Push())
         {
-            await Assert.That(TestValueScope.Current?.Value).IsEqualTo(baseCount + 1);
+
+            await Assert.That(ScopeValues.Class<ClassSample>.Current?.Value).IsEqualTo(baseCount + 1);
 
             await Task.WhenAll(CreateScopeTest(baseCount + 2), CreateScopeTest(baseCount + 3));
 
-            await Assert.That(TestValueScope.Current?.Value).IsEqualTo(baseCount + 1);
+            await Assert.That(ScopeValues.Class<ClassSample>.Current?.Value).IsEqualTo(baseCount + 1);
         }
 
         return;
@@ -24,11 +25,11 @@ internal class ValueScopeTests
         {
             return Task.Run(async () =>
             {
-                using (new TestValueScope(value))
+                using (new ClassSample(value).Push())
                 {
-                    await Assert.That(TestValueScope.Current?.Value).IsEqualTo(value);
+                    await Assert.That(ScopeValues.Class<ClassSample>.Current?.Value).IsEqualTo(value);
                     await Task.Delay(100);
-                    await Assert.That(TestValueScope.Current?.Value).IsEqualTo(value);
+                    await Assert.That(ScopeValues.Class<ClassSample>.Current?.Value).IsEqualTo(value);
                 }
             });
         }
@@ -41,13 +42,13 @@ internal class ValueScopeTests
         int count)
     {
         var baseCount = count * 10;
-        using (new ValueScope<ValueSample>(new ValueSample(baseCount + 1)))
+        using (new ValueSample(baseCount + 1).Push())
         {
-            await Assert.That(ValueScope<ValueSample>.Current.Value).IsEqualTo(baseCount + 1);
+            await Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(baseCount + 1);
 
             await Task.WhenAll(CreateScopeTest(baseCount + 2), CreateScopeTest(baseCount + 3));
 
-            await Assert.That(ValueScope<ValueSample>.Current.Value).IsEqualTo(baseCount + 1);
+            await Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(baseCount + 1);
         }
 
         return;
@@ -56,11 +57,11 @@ internal class ValueScopeTests
         {
             return Task.Run(async () =>
             {
-                using (new ValueScope<ValueSample>(new ValueSample(value)))
+                using (new ValueSample(value).Push())
                 {
-                    await Assert.That(ValueScope<ValueSample>.Current.Value).IsEqualTo(value);
+                    await Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(value);
                     await Task.Delay(100);
-                    await Assert.That(ValueScope<ValueSample>.Current.Value).IsEqualTo(value);
+                    await Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(value);
                 }
             });
         }
@@ -74,24 +75,24 @@ internal class ValueScopeTests
         int count)
     {
         var baseCount = count * 10;
-        using (new FastScope<ValueSample>(new ValueSample(baseCount + 1)))
+        using (new ValueSample(baseCount + 1).FastPush())
         {
-            Assert.That(FastScope<ValueSample>.Current.Value).IsEqualTo(baseCount + 1).GetAwaiter().GetResult();
+            Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(baseCount + 1).GetAwaiter().GetResult();
 
-            using (new FastScope<ValueSample>(new ValueSample(baseCount + 2)))
+            using (new ValueSample(baseCount + 2).FastPush())
             {
-                Assert.That(FastScope<ValueSample>.Current.Value).IsEqualTo(baseCount + 2).GetAwaiter().GetResult();
+                Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(baseCount + 2).GetAwaiter().GetResult();
             }
 
-            using (new FastScope<ValueSample>(new ValueSample(baseCount + 3)))
+            using (new ValueSample(baseCount + 3).FastPush())
             {
-                Assert.That(FastScope<ValueSample>.Current.Value).IsEqualTo(baseCount + 3).GetAwaiter().GetResult();
+                Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(baseCount + 3).GetAwaiter().GetResult();
             }
 
-            Assert.That(FastScope<ValueSample>.Current.Value).IsEqualTo(baseCount + 1).GetAwaiter().GetResult();
+            Assert.That(ScopeValues.Struct<ValueSample>.Current.Value).IsEqualTo(baseCount + 1).GetAwaiter().GetResult();
         }
 
-        Assert.That(FastScope<ValueSample>.HasCurrent).IsFalse().GetAwaiter().GetResult();
+        Assert.That(ScopeValues.Struct<ValueSample>.HasCurrent).IsFalse().GetAwaiter().GetResult();
     }
 #pragma warning restore TUnitAssertions0002
 }

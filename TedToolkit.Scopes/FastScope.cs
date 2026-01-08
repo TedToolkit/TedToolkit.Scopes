@@ -15,6 +15,7 @@ namespace TedToolkit.Scopes;
 /// <typeparam name="TScope">scope</typeparam>
 public readonly ref struct FastScope<TScope> :
     IDisposable
+    where TScope : IScope
 {
     [ThreadStatic]
     private static TScope[]? _stack;
@@ -24,22 +25,29 @@ public readonly ref struct FastScope<TScope> :
     private static int _count;
 #pragma warning restore S2743
 
-    private readonly bool _initialized;
-
     /// <summary>
     /// Current value
     /// </summary>
-    public static ref readonly TScope Current
+    internal static ref readonly TScope RefCurrent
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => ref _stack![_count - 1];
     }
 
     /// <summary>
+    /// Current value
+    /// </summary>
+    internal static TScope Current
+    {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        get => _stack![_count - 1];
+    }
+
+    /// <summary>
     /// Has current Value
     /// </summary>
 #pragma warning disable RCS1158, S2743
-    public static bool HasCurrent
+    internal static bool HasCurrent
 #pragma warning restore RCS1158, S2743
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -53,7 +61,7 @@ public readonly ref struct FastScope<TScope> :
     public FastScope(scoped in TScope value)
     {
 #pragma warning disable S3010
-        _stack ??= new TScope[8]; // 初始容量
+        _stack ??= new TScope[8];
         _count++;
 #pragma warning restore S3010
 
@@ -61,15 +69,11 @@ public readonly ref struct FastScope<TScope> :
             Array.Resize(ref _stack, _stack.Length + 8);
 
         _stack[_count - 1] = value;
-        _initialized = true;
     }
 
     /// <inheritdoc />
     public void Dispose()
     {
-        if (!_initialized)
-            return;
-
 #pragma warning disable S2696
         _count--;
 #pragma warning restore S2696

@@ -1,6 +1,6 @@
 namespace TedToolkit.Scopes.Benchmark;
 
-internal struct ValueSample(int value) : IScope
+internal class ClassSample(int value) : IScope
 {
     public int Value => value;
 }

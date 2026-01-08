@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// Scope base
+/// Scope base. This is usually faster than the scope one.
 /// </summary>
 /// <typeparam name="TScope">scope</typeparam>
 public abstract class ScopeBase<TScope> :

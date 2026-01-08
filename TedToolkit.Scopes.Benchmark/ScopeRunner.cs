@@ -14,9 +14,11 @@ public class ScopeRunner
     [GlobalSetup]
     public void Init()
     {
+        using (new ClassSample(10).Push())
+        using (new ClassSample(10).FastPush())
+        using (new ValueSample(10).Push())
+        using (new ValueSample(10).FastPush())
         using (new TestScope(10))
-        using (new ValueScope<ValueSample>(new ValueSample(10)))
-        using (new FastScope<ValueSample>(new ValueSample(10)))
         {
         }
     }
@@ -25,7 +27,7 @@ public class ScopeRunner
     /// Class Scope
     /// </summary>
     [Benchmark(Baseline = true)]
-    public void ClassScope()
+    public void ScopeBase()
     {
         using (new TestScope(10))
         {
@@ -37,31 +39,61 @@ public class ScopeRunner
     }
 
     /// <summary>
-    /// Value Scope
+    /// Class Scope
     /// </summary>
     [Benchmark]
-    public void ValueScope()
+    public void ClassScope()
     {
-        using (new ValueScope<ValueSample>(new ValueSample(10)))
+        using (new ClassSample(10).Push())
         {
-            using (new ValueScope<ValueSample>(new ValueSample(20)))
+            using (new ClassSample(20).Push())
             {
-                _ = ValueScope<ValueSample>.Current.Value;
+                _ = ScopeValues.Class<ClassSample>.Current?.Value;
             }
         }
     }
 
     /// <summary>
-    /// Fast Scope
+    /// Value Scope
     /// </summary>
     [Benchmark]
-    public void FastScope()
+    public void ValueScope()
     {
-        using (new FastScope<ValueSample>(new ValueSample(10)))
+        using (new ValueSample(10).Push())
         {
-            using (new FastScope<ValueSample>(new ValueSample(20)))
+            using (new ValueSample(20).Push())
             {
-                _ = FastScope<ValueSample>.Current.Value;
+                _ = ScopeValues.Struct<ValueSample>.Current.Value;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Fast Class Scope
+    /// </summary>
+    [Benchmark]
+    public void FastClassScope()
+    {
+        using (new ClassSample(10).FastPush())
+        {
+            using (new ClassSample(20).FastPush())
+            {
+                _ = ScopeValues.Class<ClassSample>.Current?.Value;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Fast Value Scope
+    /// </summary>
+    [Benchmark]
+    public void FastValueScope()
+    {
+        using (new ValueSample(10).FastPush())
+        {
+            using (new ValueSample(20).FastPush())
+            {
+                _ = ScopeValues.Struct<ValueSample>.Current.Value;
             }
         }
     }
