@@ -15,7 +15,7 @@ namespace TedToolkit.Scopes;
 public static class ScopeExtensions
 {
     /// <summary>
-    /// Push the scope
+    /// Push the scope. Use the fast one as possible.
     /// </summary>
     /// <param name="scope">scope</param>
     /// <typeparam name="TScope">scope type</typeparam>
