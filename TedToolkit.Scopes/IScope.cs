@@ -1,21 +1,15 @@
 // -----------------------------------------------------------------------
-// <copyright file="ValueSample.cs" company="TedToolkit">
+// <copyright file="IScope.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TedToolkit.Scopes.Benchmark;
+namespace TedToolkit.Scopes;
 
 /// <summary>
-/// Value sample
+/// The scope
 /// </summary>
-/// <param name="value">value</param>
-internal struct ValueSample(int value) : IScope
-{
-    /// <summary>
-    /// Value
-    /// </summary>
-    public int Value
-        => value;
-}
+#pragma warning disable CA1040
+public interface IScope;
+#pragma warning restore CA1040

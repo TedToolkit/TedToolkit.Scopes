@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".github/workflows/build.yml" />
+    <File Path=".gitignore" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Project Path="Build/Build.csproj">
+    <Build Solution="Debug|*" Project="false" />
+  </Project>
+  <Project Path="TedToolkit.Scopes.Analyzers/TedToolkit.Scopes.Analyzers.csproj" />
+  <Project Path="TedToolkit.Scopes.Benchmark/TedToolkit.Scopes.Benchmark.csproj" />
+  <Project Path="TedToolkit.Scopes.Tests/TedToolkit.Scopes.Tests.csproj" />
+  <Project Path="TedToolkit.Scopes/TedToolkit.Scopes.csproj">
+    <BuildDependency Project="TedToolkit.Scopes.Analyzers/TedToolkit.Scopes.Analyzers.csproj" />
+  </Project>
+</Solution>

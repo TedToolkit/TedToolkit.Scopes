@@ -13,10 +13,8 @@ namespace TedToolkit.Scopes;
 /// A Scope but not fast
 /// </summary>
 /// <typeparam name="TScope">Scope type</typeparam>
-#pragma warning disable CA1815
-public readonly struct ValueScope<TScope> : IDisposable
-#pragma warning restore CA1815
-    where TScope : struct
+public readonly record struct ValueScope<TScope> : IDisposable
+    where TScope : struct, IScope
 {
     private sealed class ScopeNode(scoped in TScope value)
     {
@@ -58,7 +56,7 @@ public readonly struct ValueScope<TScope> : IDisposable
     public ValueScope(scoped in TScope value)
     {
         _previousNode = _current.Value;
-        _current.Value = new(value);
+        _current.Value = new(in value);
     }
 
     /// <inheritdoc />

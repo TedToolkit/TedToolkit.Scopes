@@ -1,6 +1,21 @@
-﻿namespace TedToolkit.Scopes.Benchmark;
+﻿// -----------------------------------------------------------------------
+// <copyright file="TestScope.cs" company="TedToolkit">
+// Copyright (c) TedToolkit. All rights reserved.
+// Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
+// </copyright>
+// -----------------------------------------------------------------------
 
-internal class TestScope(int value) : ScopeBase<TestScope>
+namespace TedToolkit.Scopes.Benchmark;
+
+/// <summary>
+/// Test scope
+/// </summary>
+/// <param name="value">value</param>
+internal sealed class TestScope(int value) : ScopeBase<TestScope>
 {
-    public int Value => value;
+    /// <summary>
+    /// Value
+    /// </summary>
+    public int Value
+        => value;
 }
