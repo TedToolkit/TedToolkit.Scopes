@@ -30,7 +30,7 @@ public readonly record struct ValueScope<TScope> : IDisposable
     /// <summary>
     /// Current
     /// </summary>
-    internal static ref readonly TScope Current
+    public static ref readonly TScope Current
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => ref _current.Value!.Value;
@@ -40,7 +40,7 @@ public readonly record struct ValueScope<TScope> : IDisposable
     /// Has Value
     /// </summary>
 #pragma warning disable RCS1158, S2743
-    internal static bool HasCurrent
+    public static bool HasCurrent
 #pragma warning restore RCS1158, S2743
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
     <NoWarn>$(NoWarn);CA1000</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\TedToolkit.Scopes.Analyzers\bin\$(Configuration)\netstandard2.0\TedToolkit.Scopes.Analyzers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
+  </ItemGroup>
 </Project>

@@ -37,7 +37,7 @@ public readonly ref struct FastScope<TScope> :
     /// <summary>
     /// Current value
     /// </summary>
-    internal static TScope Current
+    public static TScope Current
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => _stack![_count - 1];
@@ -47,7 +47,7 @@ public readonly ref struct FastScope<TScope> :
     /// Has current Value
     /// </summary>
 #pragma warning disable RCS1158, S2743
-    internal static bool HasCurrent
+    public static bool HasCurrent
 #pragma warning restore RCS1158, S2743
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

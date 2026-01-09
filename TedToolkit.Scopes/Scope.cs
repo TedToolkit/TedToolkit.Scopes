@@ -24,7 +24,7 @@ public readonly record struct Scope<TScope> :
     /// <summary>
     ///  Current Value
     /// </summary>
-    internal static TScope? Current
+    public static TScope? Current
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         get => _current.Value;

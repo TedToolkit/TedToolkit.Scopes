@@ -1,17 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="..\externals\TedToolkit\props\CodeAnalysis.props"/>
 
-    <PropertyGroup>
-        <TargetFramework>net10.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="TUnit" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\TedToolkit.Scopes\TedToolkit.Scopes.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TUnit"/>
+    <ProjectReference Include="..\TedToolkit.Scopes.Analyzers\TedToolkit.Scopes.Analyzers.csproj" OutputItemType="analyzer"/>
+    <ProjectReference Include="..\TedToolkit.Scopes\TedToolkit.Scopes.csproj"/>
+  </ItemGroup>
 
 </Project>

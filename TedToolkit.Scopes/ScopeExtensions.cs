@@ -15,6 +15,19 @@ namespace TedToolkit.Scopes;
 public static class ScopeExtensions
 {
     /// <summary>
+    /// Push the scope fast.
+    /// </summary>
+    /// <param name="scope">scope</param>
+    /// <typeparam name="TScope">scope type</typeparam>
+    /// <returns>scope</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    public static FastScope<TScope> FastPush<TScope>(this TScope scope)
+        where TScope : class, IScope
+    {
+        return new(scope);
+    }
+
+    /// <summary>
     /// Push the scope. Use the fast one as possible.
     /// </summary>
     /// <param name="scope">scope</param>

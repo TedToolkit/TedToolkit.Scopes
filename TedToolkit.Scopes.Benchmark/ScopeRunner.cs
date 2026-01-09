@@ -1,6 +1,15 @@
+// -----------------------------------------------------------------------
+// <copyright file="ScopeRunner.cs" company="TedToolkit">
+// Copyright (c) TedToolkit. All rights reserved.
+// Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
+// </copyright>
+// -----------------------------------------------------------------------
+
 using BenchmarkDotNet.Attributes;
 
 namespace TedToolkit.Scopes.Benchmark;
+
+#pragma warning disable S108, CA1822, CA1515
 
 /// <summary>
 /// The scope Runner
@@ -30,12 +39,8 @@ public class ScopeRunner
     public void ScopeBase()
     {
         using (new TestScope(10))
-        {
-            using (new TestScope(20))
-            {
-                _ = TestScope.Current?.Value;
-            }
-        }
+        using (new TestScope(20))
+            _ = TestScope.Current?.Value;
     }
 
     /// <summary>
@@ -45,12 +50,8 @@ public class ScopeRunner
     public void ClassScope()
     {
         using (new ClassSample(10).Push())
-        {
-            using (new ClassSample(20).Push())
-            {
-                _ = ScopeValues.Class<ClassSample>.Current?.Value;
-            }
-        }
+        using (new ClassSample(20).Push())
+            _ = ScopeValues.Class<ClassSample>.Current?.Value;
     }
 
     /// <summary>
@@ -60,12 +61,8 @@ public class ScopeRunner
     public void ValueScope()
     {
         using (new ValueSample(10).Push())
-        {
-            using (new ValueSample(20).Push())
-            {
-                _ = ScopeValues.Struct<ValueSample>.Current.Value;
-            }
-        }
+        using (new ValueSample(20).Push())
+            _ = ScopeValues.Struct<ValueSample>.Current.Value;
     }
 
     /// <summary>
@@ -75,12 +72,8 @@ public class ScopeRunner
     public void FastClassScope()
     {
         using (new ClassSample(10).FastPush())
-        {
-            using (new ClassSample(20).FastPush())
-            {
-                _ = ScopeValues.Class<ClassSample>.Current?.Value;
-            }
-        }
+        using (new ClassSample(20).FastPush())
+            _ = ScopeValues.Class<ClassSample>.Current?.Value;
     }
 
     /// <summary>
@@ -90,11 +83,7 @@ public class ScopeRunner
     public void FastValueScope()
     {
         using (new ValueSample(10).FastPush())
-        {
-            using (new ValueSample(20).FastPush())
-            {
-                _ = ScopeValues.Struct<ValueSample>.Current.Value;
-            }
-        }
+        using (new ValueSample(20).FastPush())
+            _ = ScopeValues.Struct<ValueSample>.Current.Value;
     }
 }
