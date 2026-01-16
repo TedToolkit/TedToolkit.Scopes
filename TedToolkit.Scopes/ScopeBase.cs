@@ -12,7 +12,7 @@ namespace TedToolkit.Scopes;
 /// <summary>
 /// Scope base. This is usually faster than the scope one.
 /// </summary>
-/// <typeparam name="TScope">scope</typeparam>
+/// <typeparam name="TScope">scope.</typeparam>
 public abstract class ScopeBase<TScope> :
     IDisposable
     where TScope : ScopeBase<TScope>
@@ -22,7 +22,7 @@ public abstract class ScopeBase<TScope> :
     private readonly TScope? _parent;
 
     /// <summary>
-    ///  Current Value
+    ///  Gets current Value.
     /// </summary>
     public static TScope? Current
     {
@@ -31,7 +31,8 @@ public abstract class ScopeBase<TScope> :
     }
 
     /// <summary>
-    /// Create a base scope
+    /// Initializes a new instance of the <see cref="ScopeBase{TScope}"/> class.
+    /// Create a base scope.
     /// </summary>
     protected ScopeBase()
     {
@@ -47,9 +48,9 @@ public abstract class ScopeBase<TScope> :
     }
 
     /// <summary>
-    /// On Dispose
+    /// On Dispose.
     /// </summary>
-    /// <param name="disposing">disposing</param>
+    /// <param name="disposing">disposing.</param>
     protected virtual void Dispose(bool disposing)
         => _currentScope.Value = _parent;
 }

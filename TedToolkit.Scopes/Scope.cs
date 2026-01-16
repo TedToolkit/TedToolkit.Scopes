@@ -10,9 +10,9 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// Scope base
+/// Scope base.
 /// </summary>
-/// <typeparam name="TScope">scope</typeparam>
+/// <typeparam name="TScope">scope.</typeparam>
 public readonly record struct Scope<TScope> :
     IDisposable
     where TScope : class, IScope
@@ -22,7 +22,7 @@ public readonly record struct Scope<TScope> :
     private readonly TScope? _parent;
 
     /// <summary>
-    ///  Current Value
+    ///  Gets current Value.
     /// </summary>
     public static TScope? Current
     {
@@ -31,9 +31,10 @@ public readonly record struct Scope<TScope> :
     }
 
     /// <summary>
-    /// Create a base scope
+    /// Initializes a new instance of the <see cref="Scope{TScope}"/> struct.
+    /// Create a base scope.
     /// </summary>
-    /// <param name="scope">scope</param>
+    /// <param name="scope">scope.</param>
     public Scope(TScope scope)
     {
         _parent = _current.Value;

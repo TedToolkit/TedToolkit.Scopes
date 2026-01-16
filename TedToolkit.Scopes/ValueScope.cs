@@ -7,28 +7,23 @@
 
 using System.Runtime.CompilerServices;
 
+using TedToolkit.Refly;
+
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// A Scope but not fast
+/// A Scope but not fast.
 /// </summary>
-/// <typeparam name="TScope">Scope type</typeparam>
+/// <typeparam name="TScope">Scope type.</typeparam>
 public readonly record struct ValueScope<TScope> : IDisposable
     where TScope : struct, IScope
 {
-    private sealed class ScopeNode(scoped in TScope value)
-    {
-#pragma warning disable SA1401
-        public readonly TScope Value = value;
-#pragma warning restore SA1401
-    }
-
 #pragma warning disable S2743
-    private static readonly AsyncLocal<ScopeNode?> _current = new();
+    private static readonly AsyncLocal<Ref<TScope>?> _current = new();
 #pragma warning restore S2743
 
     /// <summary>
-    /// Current
+    /// Gets current.
     /// </summary>
     public static ref readonly TScope Current
     {
@@ -37,7 +32,7 @@ public readonly record struct ValueScope<TScope> : IDisposable
     }
 
     /// <summary>
-    /// Has Value
+    /// Gets a value indicating whether has Value.
     /// </summary>
 #pragma warning disable RCS1158, S2743
     public static bool HasCurrent
@@ -47,12 +42,13 @@ public readonly record struct ValueScope<TScope> : IDisposable
         get => _current.Value is not null;
     }
 
-    private readonly ScopeNode? _previousNode;
+    private readonly Ref<TScope>? _previousNode;
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ValueScope{TScope}"/> struct.
     /// Create a scope.
     /// </summary>
-    /// <param name="value">value</param>
+    /// <param name="value">value.</param>
     public ValueScope(scoped in TScope value)
     {
         _previousNode = _current.Value;

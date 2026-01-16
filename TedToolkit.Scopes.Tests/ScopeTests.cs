@@ -13,9 +13,9 @@ namespace TedToolkit.Scopes.Tests;
 internal sealed class ScopeTests
 {
     /// <summary>
-    /// Scope base test
+    /// Scope base test.
     /// </summary>
-    /// <param name="count">count</param>
+    /// <param name="count">count.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Test]
     [MatrixDataSource]
@@ -50,9 +50,9 @@ internal sealed class ScopeTests
     }
 
     /// <summary>
-    /// Value scope test
+    /// Value scope test.
     /// </summary>
-    /// <param name="count">count</param>
+    /// <param name="count">count.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Test]
     [MatrixDataSource]
@@ -87,9 +87,9 @@ internal sealed class ScopeTests
     }
 
     /// <summary>
-    /// Scope base test
+    /// Scope base test.
     /// </summary>
-    /// <param name="count">count</param>
+    /// <param name="count">count.</param>
     [Test]
     [MatrixDataSource]
 #pragma warning disable TUnitAssertions0002
