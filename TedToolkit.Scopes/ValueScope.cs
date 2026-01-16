@@ -7,6 +7,8 @@
 
 using System.Runtime.CompilerServices;
 
+using TedToolkit.Refly;
+
 namespace TedToolkit.Scopes;
 
 /// <summary>
@@ -16,15 +18,8 @@ namespace TedToolkit.Scopes;
 public readonly record struct ValueScope<TScope> : IDisposable
     where TScope : struct, IScope
 {
-    private sealed class ScopeNode(scoped in TScope value)
-    {
-#pragma warning disable SA1401
-        public readonly TScope Value = value;
-#pragma warning restore SA1401
-    }
-
 #pragma warning disable S2743
-    private static readonly AsyncLocal<ScopeNode?> _current = new();
+    private static readonly AsyncLocal<Ref<TScope>?> _current = new();
 #pragma warning restore S2743
 
     /// <summary>
@@ -47,7 +42,7 @@ public readonly record struct ValueScope<TScope> : IDisposable
         get => _current.Value is not null;
     }
 
-    private readonly ScopeNode? _previousNode;
+    private readonly Ref<TScope>? _previousNode;
 
     /// <summary>
     /// Create a scope.
