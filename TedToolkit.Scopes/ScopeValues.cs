@@ -17,14 +17,14 @@ namespace TedToolkit.Scopes;
 public static class ScopeValues
 {
     /// <summary>
-    /// Struct scope
+    /// Struct scope.
     /// </summary>
-    /// <typeparam name="TScope">scope type</typeparam>
+    /// <typeparam name="TScope">scope type.</typeparam>
     public static class Struct<TScope>
         where TScope : struct, IScope
     {
         /// <summary>
-        /// Current value
+        /// Gets current value.
         /// </summary>
         public static ref readonly TScope Current
         {
@@ -33,7 +33,7 @@ public static class ScopeValues
         }
 
         /// <summary>
-        /// Has Current
+        /// Gets a value indicating whether has Current.
         /// </summary>
         public static bool HasCurrent
         {
@@ -43,14 +43,14 @@ public static class ScopeValues
     }
 
     /// <summary>
-    /// Class scope
+    /// Class scope.
     /// </summary>
-    /// <typeparam name="TScope">scope type</typeparam>
+    /// <typeparam name="TScope">scope type.</typeparam>
     public static class Class<TScope>
         where TScope : class, IScope
     {
         /// <summary>
-        /// Current value
+        /// Gets current value.
         /// </summary>
         public static TScope? Current
         {
@@ -59,7 +59,7 @@ public static class ScopeValues
         }
 
         /// <summary>
-        /// Has Current
+        /// Gets a value indicating whether has Current.
         /// </summary>
         public static bool HasCurrent
         {

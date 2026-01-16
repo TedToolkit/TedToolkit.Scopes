@@ -12,9 +12,9 @@ using TedToolkit.Refly;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// A Scope but not fast
+/// A Scope but not fast.
 /// </summary>
-/// <typeparam name="TScope">Scope type</typeparam>
+/// <typeparam name="TScope">Scope type.</typeparam>
 public readonly record struct ValueScope<TScope> : IDisposable
     where TScope : struct, IScope
 {
@@ -23,7 +23,7 @@ public readonly record struct ValueScope<TScope> : IDisposable
 #pragma warning restore S2743
 
     /// <summary>
-    /// Current
+    /// Gets current.
     /// </summary>
     public static ref readonly TScope Current
     {
@@ -32,7 +32,7 @@ public readonly record struct ValueScope<TScope> : IDisposable
     }
 
     /// <summary>
-    /// Has Value
+    /// Gets a value indicating whether has Value.
     /// </summary>
 #pragma warning disable RCS1158, S2743
     public static bool HasCurrent
@@ -45,9 +45,10 @@ public readonly record struct ValueScope<TScope> : IDisposable
     private readonly Ref<TScope>? _previousNode;
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ValueScope{TScope}"/> struct.
     /// Create a scope.
     /// </summary>
-    /// <param name="value">value</param>
+    /// <param name="value">value.</param>
     public ValueScope(scoped in TScope value)
     {
         _previousNode = _current.Value;

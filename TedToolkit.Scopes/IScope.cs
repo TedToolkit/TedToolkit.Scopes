@@ -8,7 +8,7 @@
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// The scope
+/// The scope.
 /// </summary>
 #pragma warning disable CA1040
 public interface IScope;

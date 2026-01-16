@@ -12,7 +12,7 @@ namespace TedToolkit.Scopes;
 /// <summary>
 /// A fast scope you can't await.
 /// </summary>
-/// <typeparam name="TScope">scope</typeparam>
+/// <typeparam name="TScope">scope.</typeparam>
 public readonly ref struct FastScope<TScope> :
     IDisposable
     where TScope : IScope
@@ -26,7 +26,7 @@ public readonly ref struct FastScope<TScope> :
 #pragma warning restore S2743
 
     /// <summary>
-    /// Current value
+    /// Gets current value.
     /// </summary>
     internal static ref readonly TScope RefCurrent
     {
@@ -35,7 +35,7 @@ public readonly ref struct FastScope<TScope> :
     }
 
     /// <summary>
-    /// Current value
+    /// Gets current value.
     /// </summary>
     public static TScope Current
     {
@@ -44,7 +44,7 @@ public readonly ref struct FastScope<TScope> :
     }
 
     /// <summary>
-    /// Has current Value
+    /// Gets a value indicating whether has current Value.
     /// </summary>
 #pragma warning disable RCS1158, S2743
     public static bool HasCurrent
@@ -55,9 +55,10 @@ public readonly ref struct FastScope<TScope> :
     }
 
     /// <summary>
-    /// Create a fast scope
+    /// Initializes a new instance of the <see cref="FastScope{TScope}"/> struct.
+    /// Create a fast scope.
     /// </summary>
-    /// <param name="value">value</param>
+    /// <param name="value">value.</param>
     public FastScope(scoped in TScope value)
     {
 #pragma warning disable S3010
