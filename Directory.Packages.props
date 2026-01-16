@@ -6,8 +6,9 @@
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="5.0.0" />
-    <PackageVersion Include="Sourcy.DotNet" Version="1.0.0" />
+    <PackageVersion Include="Polyfill" Version="9.5.0" />
+    <PackageVersion Include="Sourcy.DotNet" Version="1.0.1" />
     <PackageVersion Include="TedToolkit.Refly" Version="2026.1.16" />
-    <PackageVersion Include="TUnit" Version="1.9.2" />
+    <PackageVersion Include="TUnit" Version="1.11.51" />
   </ItemGroup>
 </Project>
