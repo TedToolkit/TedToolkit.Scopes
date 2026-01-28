@@ -10,16 +10,16 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// The extensions for the scope
+/// The extensions for the scope.
 /// </summary>
 public static class ScopeExtensions
 {
     /// <summary>
     /// Push the scope fast.
     /// </summary>
-    /// <param name="scope">scope</param>
-    /// <typeparam name="TScope">scope type</typeparam>
-    /// <returns>scope</returns>
+    /// <param name="scope">scope.</param>
+    /// <typeparam name="TScope">scope type.</typeparam>
+    /// <returns>scope result.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static FastScope<TScope> FastPush<TScope>(this TScope scope)
         where TScope : class, IScope
@@ -30,9 +30,9 @@ public static class ScopeExtensions
     /// <summary>
     /// Push the scope. Use the fast one as possible.
     /// </summary>
-    /// <param name="scope">scope</param>
-    /// <typeparam name="TScope">scope type</typeparam>
-    /// <returns>scope</returns>
+    /// <param name="scope">scope.</param>
+    /// <typeparam name="TScope">scope type.</typeparam>
+    /// <returns>scope result.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Scope<TScope> Push<TScope>(this TScope scope)
         where TScope : class, IScope

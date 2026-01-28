@@ -8,13 +8,13 @@
 namespace TedToolkit.Scopes.Tests;
 
 /// <summary>
-/// Struct
+/// Struct.
 /// </summary>
-/// <param name="value">value</param>
+/// <param name="value">value.</param>
 internal struct ValueSample(int value) : IScope
 {
     /// <summary>
-    /// Value
+    /// Gets value.
     /// </summary>
     public int Value
         => value;

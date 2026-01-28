@@ -8,13 +8,13 @@
 namespace TedToolkit.Scopes.Tests;
 
 /// <summary>
-/// Class
+/// Class.
 /// </summary>
-/// <param name="value">value</param>
+/// <param name="value">value.</param>
 internal sealed class ClassSample(int value) : IScope
 {
     /// <summary>
-    /// Value
+    /// Gets value.
     /// </summary>
     public int Value
         => value;
