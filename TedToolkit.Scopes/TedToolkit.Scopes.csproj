@@ -3,14 +3,13 @@
   <Import Project="..\externals\TedToolkit\props\NugetPackage.props"/>
   <Import Project="..\externals\TedToolkit\props\AlmostAllFrameworks.props"/>
   <PropertyGroup>
+    <Title>Scopes</Title>
+    <Description>The Scopes.</Description>
     <NoWarn>$(NoWarn);CA1000</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\TedToolkit.Scopes.Analyzers\bin\$(Configuration)\netstandard2.0\TedToolkit.Scopes.Analyzers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="TedToolkit.Refly" />
   </ItemGroup>
 </Project>
