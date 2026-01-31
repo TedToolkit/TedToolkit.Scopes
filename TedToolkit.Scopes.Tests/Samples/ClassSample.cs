@@ -20,7 +20,7 @@ internal sealed class ClassSample(int value) : IScope
         => value;
 
     /// <summary>
-    /// Excited
+    /// Gets a value indicating whether excited.
     /// </summary>
     public bool Exited { get; private set; }
 
