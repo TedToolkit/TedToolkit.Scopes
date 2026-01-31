@@ -1,21 +1,23 @@
 // -----------------------------------------------------------------------
-// <copyright file="ClassSample.cs" company="TedToolkit">
+// <copyright file="SpyClassSample.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TedToolkit.Scopes.Tests;
+namespace TedToolkit.Scopes.Tests.Samples;
 
 /// <summary>
 /// Class.
 /// </summary>
-/// <param name="value">value.</param>
-internal sealed class ClassSample(int value) : IScope
+internal sealed class SpyClassSample : IExitActionScope
 {
     /// <summary>
-    /// Gets value.
+    /// Excited
     /// </summary>
-    public int Value
-        => value;
+    public bool Exited { get; private set; }
+
+    /// <inheritdoc/>
+    public void OnExit()
+        => Exited = true;
 }

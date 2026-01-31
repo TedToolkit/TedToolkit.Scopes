@@ -1,21 +1,19 @@
 // -----------------------------------------------------------------------
-// <copyright file="ValueSample.cs" company="TedToolkit">
+// <copyright file="IExitActionScope.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
 // </copyright>
 // -----------------------------------------------------------------------
 
-namespace TedToolkit.Scopes.Tests;
+namespace TedToolkit.Scopes;
 
 /// <summary>
-/// Struct.
+/// The scope that can exit.
 /// </summary>
-/// <param name="value">value.</param>
-internal struct ValueSample(int value) : IScope
+public interface IExitActionScope : IScope
 {
     /// <summary>
-    /// Gets value.
+    /// The exit action.
     /// </summary>
-    public int Value
-        => value;
+    void OnExit();
 }

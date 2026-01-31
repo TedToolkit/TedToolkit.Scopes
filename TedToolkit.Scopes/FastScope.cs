@@ -78,5 +78,10 @@ public readonly ref struct FastScope<TScope> :
 #pragma warning disable S2696
         _count--;
 #pragma warning restore S2696
+
+#pragma warning disable RCS1146
+        if (_stack is not null && _stack[_count] is IExitActionScope exitActionScope)
+#pragma warning restore RCS1146
+            exitActionScope.OnExit();
     }
 }

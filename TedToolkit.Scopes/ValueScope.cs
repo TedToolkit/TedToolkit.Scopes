@@ -57,5 +57,12 @@ public readonly record struct ValueScope<TScope> : IDisposable
 
     /// <inheritdoc />
     public void Dispose()
-        => _current.Value = _previousNode;
+    {
+#pragma warning disable CA1508, CS8602 // Dereference of a possibly null reference.
+        if (_current.Value.Value is IExitActionScope exitActionScope)
+#pragma warning restore CA1508, CS8602 // Dereference of a possibly null reference.
+            exitActionScope.OnExit();
+
+        _current.Value = _previousNode;
+    }
 }
