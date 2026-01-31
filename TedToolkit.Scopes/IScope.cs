@@ -8,8 +8,17 @@
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// The scope
+/// The scope.
 /// </summary>
-#pragma warning disable CA1040
-public interface IScope;
-#pragma warning restore CA1040
+public interface IScope
+{
+    /// <summary>
+    /// The entry action.
+    /// </summary>
+    void OnEntry();
+
+    /// <summary>
+    /// The exit action.
+    /// </summary>
+    void OnExit();
+}

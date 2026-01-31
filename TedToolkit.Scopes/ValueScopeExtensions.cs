@@ -17,9 +17,9 @@ public static class ValueScopeExtensions
     /// <summary>
     /// Push the scope fast.
     /// </summary>
-    /// <param name="scope">scope</param>
-    /// <typeparam name="TScope">scope type</typeparam>
-    /// <returns>scope</returns>
+    /// <param name="scope">scope.</param>
+    /// <typeparam name="TScope">scope type.</typeparam>
+    /// <returns>scope result.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static FastScope<TScope> FastPush<TScope>(this TScope scope)
         where TScope : struct, IScope
@@ -30,9 +30,9 @@ public static class ValueScopeExtensions
     /// <summary>
     /// Push the scope. Use the fast one as possible.
     /// </summary>
-    /// <param name="scope">scope</param>
-    /// <typeparam name="TScope">scope type</typeparam>
-    /// <returns>scope</returns>
+    /// <param name="scope">scope.</param>
+    /// <typeparam name="TScope">scope type.</typeparam>
+    /// <returns>scope result.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ValueScope<TScope> Push<TScope>(this TScope scope)
         where TScope : struct, IScope
