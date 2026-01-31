@@ -18,4 +18,18 @@ internal sealed class ClassSample(int value) : IScope
     /// </summary>
     public int Value
         => value;
+
+    /// <summary>
+    /// Excited
+    /// </summary>
+    public bool Exited { get; private set; }
+
+    /// <inheritdoc/>
+    public void OnEntry()
+    {
+    }
+
+    /// <inheritdoc/>
+    public void OnExit()
+        => Exited = true;
 }

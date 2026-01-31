@@ -132,7 +132,7 @@ internal sealed class ScopeTests
     [Test]
     public async Task Should_exit_when_disposed_if_class()
     {
-        var sample = new SpyClassSample();
+        var sample = new ClassSample(0);
         await Assert.That(sample.Exited).IsFalse();
 
         using (sample.Push())
@@ -151,7 +151,7 @@ internal sealed class ScopeTests
     public async Task Should_exit_when_disposed_if_struct()
     {
         var exited = false;
-        var sample = new SpyValueSample(() => exited = true);
+        var sample = new ValueSample(0, () => exited = true);
         await Assert.That(exited).IsFalse();
 
         using (sample.Push())
@@ -169,7 +169,7 @@ internal sealed class ScopeTests
     [Test]
     public void Should_exit_when_disposed_if_class_on_fast()
     {
-        var sample = new SpyClassSample();
+        var sample = new ClassSample(0);
         Assert.That(sample.Exited).IsFalse().GetAwaiter().GetResult();
 
         using (sample.FastPush())
@@ -187,7 +187,7 @@ internal sealed class ScopeTests
     public void Should_exit_when_disposed_if_struct_on_fast()
     {
         var exited = false;
-        var sample = new SpyValueSample(() => exited = true);
+        var sample = new ValueSample(0, () => exited = true);
         Assert.That(exited).IsFalse().GetAwaiter().GetResult();
 
         using (sample.FastPush())

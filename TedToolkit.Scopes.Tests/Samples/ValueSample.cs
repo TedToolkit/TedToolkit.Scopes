@@ -11,11 +11,21 @@ namespace TedToolkit.Scopes.Tests.Samples;
 /// Struct.
 /// </summary>
 /// <param name="value">value.</param>
-internal struct ValueSample(int value) : IScope
+/// <param name="action">action.</param>
+internal struct ValueSample(int value, Action? action = null) : IScope
 {
     /// <summary>
     /// Gets value.
     /// </summary>
     public int Value
         => value;
+
+    /// <inheritdoc/>
+    public void OnEntry()
+    {
+    }
+
+    /// <inheritdoc/>
+    public void OnExit()
+        => action?.Invoke();
 }

@@ -38,15 +38,14 @@ public readonly record struct Scope<TScope> :
     public Scope(TScope scope)
     {
         _parent = _current.Value;
+        scope?.OnEntry();
         _current.Value = scope;
     }
 
     /// <inheritdoc />
     public void Dispose()
     {
-        if (_current.Value is IExitActionScope exitActionScope)
-            exitActionScope.OnExit();
-
+        _current.Value?.OnExit();
         _current.Value = _parent;
     }
 }

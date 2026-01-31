@@ -69,6 +69,7 @@ public readonly ref struct FastScope<TScope> :
         if (_count >= _stack.Length)
             Array.Resize(ref _stack, _stack.Length + 8);
 
+        value.OnEntry();
         _stack[_count - 1] = value;
     }
 
@@ -79,9 +80,6 @@ public readonly ref struct FastScope<TScope> :
         _count--;
 #pragma warning restore S2696
 
-#pragma warning disable RCS1146
-        if (_stack is not null && _stack[_count] is IExitActionScope exitActionScope)
-#pragma warning restore RCS1146
-            exitActionScope.OnExit();
+        _stack?[_count].OnExit();
     }
 }
