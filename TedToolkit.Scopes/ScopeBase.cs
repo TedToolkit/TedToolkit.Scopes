@@ -40,6 +40,12 @@ public abstract class ScopeBase<TScope> :
         _currentScope.Value = (TScope)this;
     }
 
+    /// <summary>
+    /// Finalizes an instance of the <see cref="ScopeBase{TScope}"/> class.
+    /// </summary>
+    ~ScopeBase()
+        => Dispose(false);
+
     /// <inheritdoc />
     public void Dispose()
     {
@@ -52,5 +58,8 @@ public abstract class ScopeBase<TScope> :
     /// </summary>
     /// <param name="disposing">disposing.</param>
     protected virtual void Dispose(bool disposing)
-        => _currentScope.Value = _parent;
+    {
+        if (disposing)
+            _currentScope.Value = _parent;
+    }
 }
