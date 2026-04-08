@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="ScopePushAnalyzer.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
@@ -16,7 +16,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
 /// <summary>
-/// The scope push method analyzer
+/// Analyzer that suggests using <c>FastPush</c> instead of <c>Push</c> in non-async contexts.
 /// </summary>
 #pragma warning disable RS1038
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
@@ -24,7 +24,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 public class ScopePushAnalyzer : DiagnosticAnalyzer
 {
     /// <summary>
-    /// Diagnostic id
+    /// The diagnostic ID for this analyzer.
     /// </summary>
     public const string DIAGNOSTIC_ID = "SCOPE002";
 

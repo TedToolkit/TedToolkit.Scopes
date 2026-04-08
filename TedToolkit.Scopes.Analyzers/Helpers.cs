@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="Helpers.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
@@ -12,15 +12,15 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace TedToolkit.Scopes.Analyzers;
 
 /// <summary>
-/// Some helpers for the analyzer.
+/// Helper methods for the scope analyzers.
 /// </summary>
 internal static class Helpers
 {
     /// <summary>
-    /// Is in the async context
+    /// Determines whether the given syntax node is inside an async context.
     /// </summary>
-    /// <param name="node">node</param>
-    /// <returns>is in async</returns>
+    /// <param name="node">The syntax node to check.</param>
+    /// <returns><see langword="true"/> if the node is inside an async method, local function, or lambda; otherwise, <see langword="false"/>.</returns>
     public static bool IsInAsyncContext(this SyntaxNode node)
     {
         var parent = node.Ancestors().FirstOrDefault(n =>

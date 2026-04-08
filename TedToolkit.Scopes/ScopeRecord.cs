@@ -10,9 +10,10 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// Scope base. This is usually faster than the scope one.
+/// An abstract record base class for scopes, providing async-safe ambient context tracking via <see cref="AsyncLocal{T}"/>.
+/// The scope is entered automatically on construction and exited on disposal.
 /// </summary>
-/// <typeparam name="TScope">scope.</typeparam>
+/// <typeparam name="TScope">The concrete scope type that derives from this record.</typeparam>
 public abstract record ScopeRecord<TScope> :
     IDisposable
     where TScope : ScopeRecord<TScope>
@@ -22,17 +23,19 @@ public abstract record ScopeRecord<TScope> :
     private readonly TScope? _parent;
 
     /// <summary>
-    ///  Gets current Value.
+    /// Gets the current scope instance, or <see langword="null"/> if no scope is active.
     /// </summary>
     public static TScope? Current
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => _currentScope.Value;
+        get
+        {
+            return _currentScope.Value;
+        }
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ScopeRecord{TScope}"/> class.
-    /// Create a base scope.
     /// </summary>
     protected ScopeRecord()
     {
@@ -44,7 +47,9 @@ public abstract record ScopeRecord<TScope> :
     /// Finalizes an instance of the <see cref="ScopeRecord{TScope}"/> class.
     /// </summary>
     ~ScopeRecord()
-        => Dispose(false);
+    {
+        Dispose(false);
+    }
 
     /// <inheritdoc />
     public void Dispose()
@@ -54,12 +59,16 @@ public abstract record ScopeRecord<TScope> :
     }
 
     /// <summary>
-    /// On Dispose.
+    /// Releases resources and restores the parent scope.
     /// </summary>
-    /// <param name="disposing">disposing.</param>
+    /// <param name="disposing"><see langword="true"/> to release managed resources; <see langword="false"/> when called from the finalizer.</param>
     protected virtual void Dispose(bool disposing)
     {
-        if (disposing)
-            _currentScope.Value = _parent;
+        if (!disposing)
+        {
+            return;
+        }
+
+        _currentScope.Value = _parent;
     }
 }

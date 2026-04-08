@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="ScopePushCodeFixProvider.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
@@ -17,7 +17,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace TedToolkit.Scopes.Analyzers;
 
 /// <summary>
-/// The push method fixer
+/// Code fix provider that converts <c>Push</c> to <c>FastPush</c> in non-async contexts.
 /// </summary>
 [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(ScopePushCodeFixProvider))]
 [Shared]

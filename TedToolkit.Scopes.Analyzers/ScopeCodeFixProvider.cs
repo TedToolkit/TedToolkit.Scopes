@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="ScopeCodeFixProvider.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
@@ -17,7 +17,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 namespace TedToolkit.Scopes.Analyzers;
 
 /// <summary>
-/// The fixer for the scope code
+/// Code fix provider that converts <c>Scope</c>/<c>ValueScope</c> to <c>FastScope</c> in non-async contexts.
 /// </summary>
 [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(ScopeCodeFixProvider))]
 [Shared]

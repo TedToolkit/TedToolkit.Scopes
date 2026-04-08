@@ -1,4 +1,4 @@
-﻿// -----------------------------------------------------------------------
+// -----------------------------------------------------------------------
 // <copyright file="ScopeAnalyzer.cs" company="TedToolkit">
 // Copyright (c) TedToolkit. All rights reserved.
 // Licensed under the LGPL-3.0 license. See COPYING, COPYING.LESSER file in the project root for full license information.
@@ -15,7 +15,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace TedToolkit.Scopes.Analyzers;
 
 /// <summary>
-/// For the scope creation check.
+/// Analyzer that suggests using <c>FastScope</c> instead of <c>Scope</c> or <c>ValueScope</c> in non-async contexts.
 /// </summary>
 #pragma warning disable RS1038
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
@@ -23,7 +23,7 @@ namespace TedToolkit.Scopes.Analyzers;
 public class ScopeAnalyzer : DiagnosticAnalyzer
 {
     /// <summary>
-    /// Diagnostic id
+    /// The diagnostic ID for this analyzer.
     /// </summary>
     public const string DIAGNOSTIC_ID = "SCOPE001";
 
