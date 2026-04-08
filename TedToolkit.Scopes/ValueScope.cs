@@ -12,9 +12,10 @@ using TedToolkit.Refly;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// A Scope but not fast.
+/// An async-safe scope wrapper for struct types implementing <see cref="IScope"/>.
+/// Uses <see cref="AsyncLocal{T}"/> to flow through <see langword="async"/>/<see langword="await"/> boundaries.
 /// </summary>
-/// <typeparam name="TScope">Scope type.</typeparam>
+/// <typeparam name="TScope">The struct type implementing <see cref="IScope"/>.</typeparam>
 public readonly record struct ValueScope<TScope> : IDisposable
     where TScope : struct, IScope
 {
@@ -23,32 +24,37 @@ public readonly record struct ValueScope<TScope> : IDisposable
 #pragma warning restore S2743
 
     /// <summary>
-    /// Gets current.
+    /// Gets a reference to the current scope value.
     /// </summary>
     public static ref readonly TScope Current
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => ref _current.Value!.Value;
+        get
+        {
+            return ref _current.Value!.Value;
+        }
     }
 
     /// <summary>
-    /// Gets a value indicating whether has Value.
+    /// Gets a value indicating whether a current scope exists.
     /// </summary>
 #pragma warning disable RCS1158, S2743
     public static bool HasCurrent
 #pragma warning restore RCS1158, S2743
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => _current.Value is not null;
+        get
+        {
+            return _current.Value is not null;
+        }
     }
 
     private readonly Ref<TScope>? _previousNode;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ValueScope{TScope}"/> struct.
-    /// Create a scope.
     /// </summary>
-    /// <param name="value">value.</param>
+    /// <param name="value">The scope value to push as current.</param>
     public ValueScope(scoped in TScope value)
     {
         _previousNode = _current.Value;

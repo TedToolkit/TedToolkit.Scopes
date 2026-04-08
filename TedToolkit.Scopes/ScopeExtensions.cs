@@ -10,16 +10,16 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// The extensions for the scope.
+/// Extension methods for pushing class-based <see cref="IScope"/> implementations.
 /// </summary>
 public static class ScopeExtensions
 {
     /// <summary>
-    /// Push the scope fast.
+    /// Pushes the scope onto the thread-local stack for fast, synchronous-only access.
     /// </summary>
-    /// <param name="scope">scope.</param>
-    /// <typeparam name="TScope">scope type.</typeparam>
-    /// <returns>scope result.</returns>
+    /// <param name="scope">The scope instance to push.</param>
+    /// <typeparam name="TScope">The class type implementing <see cref="IScope"/>.</typeparam>
+    /// <returns>A <see cref="FastScope{TScope}"/> that restores the previous scope on disposal.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static FastScope<TScope> FastPush<TScope>(this TScope scope)
         where TScope : class, IScope
@@ -28,11 +28,12 @@ public static class ScopeExtensions
     }
 
     /// <summary>
-    /// Push the scope. Use the fast one as possible.
+    /// Pushes the scope as the current ambient context. Safe to use across <see langword="await"/> boundaries.
+    /// Prefer <see cref="FastPush{TScope}"/> in synchronous methods for better performance.
     /// </summary>
-    /// <param name="scope">scope.</param>
-    /// <typeparam name="TScope">scope type.</typeparam>
-    /// <returns>scope result.</returns>
+    /// <param name="scope">The scope instance to push.</param>
+    /// <typeparam name="TScope">The class type implementing <see cref="IScope"/>.</typeparam>
+    /// <returns>A <see cref="Scope{TScope}"/> that restores the previous scope on disposal.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static Scope<TScope> Push<TScope>(this TScope scope)
         where TScope : class, IScope

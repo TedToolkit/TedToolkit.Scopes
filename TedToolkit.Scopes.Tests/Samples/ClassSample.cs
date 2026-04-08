@@ -8,19 +8,24 @@
 namespace TedToolkit.Scopes.Tests.Samples;
 
 /// <summary>
-/// Class.
+/// A class-based scope sample for testing.
 /// </summary>
-/// <param name="value">value.</param>
+/// <param name="value">The scope value.</param>
 internal sealed class ClassSample(int value) : IScope
 {
     /// <summary>
-    /// Gets value.
+    /// Gets the scope value.
     /// </summary>
     public int Value
-        => value;
+    {
+        get
+        {
+            return value;
+        }
+    }
 
     /// <summary>
-    /// Gets a value indicating whether excited.
+    /// Gets a value indicating whether the scope has been exited.
     /// </summary>
     public bool Exited { get; private set; }
 
@@ -31,5 +36,7 @@ internal sealed class ClassSample(int value) : IScope
 
     /// <inheritdoc/>
     public void OnExit()
-        => Exited = true;
+    {
+        Exited = true;
+    }
 }

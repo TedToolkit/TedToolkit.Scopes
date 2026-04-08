@@ -8,13 +8,13 @@
 namespace TedToolkit.Scopes.Benchmark;
 
 /// <summary>
-/// Class sample
+/// A class-based scope sample for benchmarking.
 /// </summary>
-/// <param name="value">value</param>
+/// <param name="value">The scope value.</param>
 internal sealed class ClassSample(int value) : IScope
 {
     /// <summary>
-    /// Value
+    /// Gets the scope value.
     /// </summary>
     public int Value
         => value;

@@ -10,9 +10,10 @@ using System.Runtime.CompilerServices;
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// Scope base.
+/// An async-safe scope wrapper for class types implementing <see cref="IScope"/>.
+/// Uses <see cref="AsyncLocal{T}"/> to flow through <see langword="async"/>/<see langword="await"/> boundaries.
 /// </summary>
-/// <typeparam name="TScope">scope.</typeparam>
+/// <typeparam name="TScope">The class type implementing <see cref="IScope"/>.</typeparam>
 public readonly record struct Scope<TScope> :
     IDisposable
     where TScope : class, IScope
@@ -22,19 +23,21 @@ public readonly record struct Scope<TScope> :
     private readonly TScope? _parent;
 
     /// <summary>
-    ///  Gets current Value.
+    /// Gets the current scope instance, or <see langword="null"/> if no scope is active.
     /// </summary>
     public static TScope? Current
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        get => _current.Value;
+        get
+        {
+            return _current.Value;
+        }
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Scope{TScope}"/> struct.
-    /// Create a base scope.
     /// </summary>
-    /// <param name="scope">scope.</param>
+    /// <param name="scope">The scope instance to push as current.</param>
     public Scope(TScope scope)
     {
         _parent = _current.Value;

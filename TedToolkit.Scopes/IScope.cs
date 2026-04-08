@@ -8,17 +8,17 @@
 namespace TedToolkit.Scopes;
 
 /// <summary>
-/// The scope.
+/// Defines the lifecycle methods for a scope.
 /// </summary>
 public interface IScope
 {
     /// <summary>
-    /// The entry action.
+    /// Called when the scope is entered.
     /// </summary>
     void OnEntry();
 
     /// <summary>
-    /// The exit action.
+    /// Called when the scope is exited.
     /// </summary>
     void OnExit();
 }

@@ -8,13 +8,13 @@
 namespace TedToolkit.Scopes.Benchmark;
 
 /// <summary>
-/// Value sample
+/// A struct-based scope sample for benchmarking.
 /// </summary>
-/// <param name="value">value</param>
+/// <param name="value">The scope value.</param>
 internal struct ValueSample(int value) : IScope
 {
     /// <summary>
-    /// Value
+    /// Gets the scope value.
     /// </summary>
     public int Value
         => value;

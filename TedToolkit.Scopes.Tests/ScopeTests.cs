@@ -15,9 +15,9 @@ namespace TedToolkit.Scopes.Tests;
 internal sealed class ScopeTests
 {
     /// <summary>
-    /// Scope base test.
+    /// Tests async-safe class scope with parallel tasks.
     /// </summary>
-    /// <param name="count">count.</param>
+    /// <param name="count">The matrix count multiplier.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Test]
     [MatrixDataSource]
@@ -52,9 +52,9 @@ internal sealed class ScopeTests
     }
 
     /// <summary>
-    /// Value scope test.
+    /// Tests async-safe value scope with parallel tasks.
     /// </summary>
-    /// <param name="count">count.</param>
+    /// <param name="count">The matrix count multiplier.</param>
     /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Test]
     [MatrixDataSource]
@@ -89,9 +89,9 @@ internal sealed class ScopeTests
     }
 
     /// <summary>
-    /// Scope base test.
+    /// Tests fast scope with synchronous nesting.
     /// </summary>
-    /// <param name="count">count.</param>
+    /// <param name="count">The matrix count multiplier.</param>
     [Test]
     [MatrixDataSource]
 #pragma warning disable TUnitAssertions0002
@@ -126,7 +126,7 @@ internal sealed class ScopeTests
 #pragma warning restore TUnitAssertions0002
 
     /// <summary>
-    /// should exit.
+    /// Verifies that <see cref="IScope.OnExit"/> is called when a class scope is disposed.
     /// </summary>
     /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Test]
@@ -144,7 +144,7 @@ internal sealed class ScopeTests
     }
 
     /// <summary>
-    /// should exit.
+    /// Verifies that <see cref="IScope.OnExit"/> is called when a struct scope is disposed.
     /// </summary>
     /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
     [Test]
@@ -164,7 +164,7 @@ internal sealed class ScopeTests
 #pragma warning disable TUnitAssertions0002
 
     /// <summary>
-    /// should exit.
+    /// Verifies that <see cref="IScope.OnExit"/> is called when a class fast scope is disposed.
     /// </summary>
     [Test]
     public void Should_exit_when_disposed_if_class_on_fast()
@@ -181,7 +181,7 @@ internal sealed class ScopeTests
     }
 
     /// <summary>
-    /// should exit.
+    /// Verifies that <see cref="IScope.OnExit"/> is called when a struct fast scope is disposed.
     /// </summary>
     [Test]
     public void Should_exit_when_disposed_if_struct_on_fast()

@@ -12,13 +12,13 @@ namespace TedToolkit.Scopes.Benchmark;
 #pragma warning disable S108, CA1822, CA1515
 
 /// <summary>
-/// The scope Runner
+/// Benchmark runner for comparing scope implementations.
 /// </summary>
 [MemoryDiagnoser]
 public class ScopeRunner
 {
     /// <summary>
-    /// Init
+    /// Warms up all scope implementations before benchmarking.
     /// </summary>
     [GlobalSetup]
     public void Init()
@@ -33,7 +33,7 @@ public class ScopeRunner
     }
 
     /// <summary>
-    /// Class Scope
+    /// Benchmarks <see cref="ScopeBase{TScope}"/> (baseline).
     /// </summary>
     [Benchmark(Baseline = true)]
     public void ScopeBase()
@@ -44,7 +44,7 @@ public class ScopeRunner
     }
 
     /// <summary>
-    /// Class Scope
+    /// Benchmarks <see cref="Scope{TScope}"/> via <see cref="ScopeExtensions.Push{TScope}"/>.
     /// </summary>
     [Benchmark]
     public void ClassScope()
@@ -55,7 +55,7 @@ public class ScopeRunner
     }
 
     /// <summary>
-    /// Value Scope
+    /// Benchmarks <see cref="ValueScope{TScope}"/> via <see cref="ValueScopeExtensions.Push{TScope}"/>.
     /// </summary>
     [Benchmark]
     public void ValueScope()
@@ -66,7 +66,7 @@ public class ScopeRunner
     }
 
     /// <summary>
-    /// Fast Class Scope
+    /// Benchmarks <see cref="FastScope{TScope}"/> with a class type via <see cref="ScopeExtensions.FastPush{TScope}"/>.
     /// </summary>
     [Benchmark]
     public void FastClassScope()
@@ -77,7 +77,7 @@ public class ScopeRunner
     }
 
     /// <summary>
-    /// Fast Value Scope
+    /// Benchmarks <see cref="FastScope{TScope}"/> with a struct type via <see cref="ValueScopeExtensions.FastPush{TScope}"/>.
     /// </summary>
     [Benchmark]
     public void FastValueScope()

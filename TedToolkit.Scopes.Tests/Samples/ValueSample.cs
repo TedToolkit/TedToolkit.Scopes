@@ -8,17 +8,22 @@
 namespace TedToolkit.Scopes.Tests.Samples;
 
 /// <summary>
-/// Struct.
+/// A struct-based scope sample for testing.
 /// </summary>
-/// <param name="value">value.</param>
-/// <param name="action">action.</param>
+/// <param name="value">The scope value.</param>
+/// <param name="action">An optional action to invoke on exit.</param>
 internal struct ValueSample(int value, Action? action = null) : IScope
 {
     /// <summary>
-    /// Gets value.
+    /// Gets the scope value.
     /// </summary>
     public int Value
-        => value;
+    {
+        get
+        {
+            return value;
+        }
+    }
 
     /// <inheritdoc/>
     public void OnEntry()
@@ -27,5 +32,7 @@ internal struct ValueSample(int value, Action? action = null) : IScope
 
     /// <inheritdoc/>
     public void OnExit()
-        => action?.Invoke();
+    {
+        action?.Invoke();
+    }
 }
