@@ -6,6 +6,7 @@
     <Title>Scopes</Title>
     <Description>The Scopes.</Description>
     <NoWarn>$(NoWarn);CA1000</NoWarn>
+    <IsAotCompatible Condition="$([MSBuild]::IsTargetFrameworkCompatible('$(TargetFramework)', 'net8.0'))">true</IsAotCompatible>
   </PropertyGroup>
 
   <ItemGroup>
