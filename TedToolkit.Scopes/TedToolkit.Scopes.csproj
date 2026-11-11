@@ -13,4 +13,9 @@
     <None Include="..\TedToolkit.Scopes.Analyzers\bin\$(Configuration)\netstandard2.0\TedToolkit.Scopes.Analyzers.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false"/>
     <PackageReference Include="TedToolkit.Refly" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="../.agents/skills/choose-ambient-scope-lifetimes/**/*"
+          Pack="true" PackagePath="skills/choose-ambient-scope-lifetimes/" />
+  </ItemGroup>
 </Project>
