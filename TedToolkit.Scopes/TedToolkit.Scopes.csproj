@@ -3,6 +3,9 @@
   <Import Project="NugetPackage.props" Sdk="TedToolkit.Build.Sdk"/>
   <Import Project="AlmostAllFrameworks.props" Sdk="TedToolkit.Build.Sdk"/>
   <PropertyGroup>
+    <TargetFrameworks>$(TargetFrameworks);net11.0</TargetFrameworks>
+  </PropertyGroup>
+  <PropertyGroup>
     <Title>Scopes</Title>
     <Description>The Scopes.</Description>
     <NoWarn>$(NoWarn);CA1000</NoWarn>
